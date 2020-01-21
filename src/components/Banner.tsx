@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import FG_BG from "../assets/global-bg.png";
+import BANNER_IMG from "../assets/frc-ir-banner.png";
 
 const styles = {
   container: {
@@ -20,7 +20,7 @@ class Banner extends React.Component {
   public render() {
     return (
       <div style={styles.container}>
-        <img style={styles.bg} src={FG_BG}/>
+        <img style={styles.bg} src={BANNER_IMG}/>
       </div>
     );
   }
