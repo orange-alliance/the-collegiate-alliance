@@ -1,5 +1,5 @@
 import * as React from "react";
-import OceanOpportunitiesRankingTable from "../components/game-specific/OceanOpportunitiesRankingTable";
+import FRC20RankingTable from "../components/game-specific/FRC20RankingTable";
 import AppTheme from "../AppTheme";
 
 import {Ranking} from "@the-orange-alliance/lib-ems";
@@ -23,7 +23,7 @@ class EventRankingsModule extends React.Component<IProps> {
     const {rankings} = this.props;
     return (
       <div style={styles.container}>
-        <OceanOpportunitiesRankingTable rankings={rankings}/>
+        <FRC20RankingTable rankings={rankings}/>
       </div>
     );
   }

@@ -40,7 +40,7 @@ interface IState {
   loading: boolean;
 }
 
-class OceanOpportunitiesDetailCard extends React.Component<IProps, IState> {
+class FRC20DetailCard extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
 
@@ -228,4 +228,4 @@ class OceanOpportunitiesDetailCard extends React.Component<IProps, IState> {
   }
 }
 
-export default OceanOpportunitiesDetailCard;
+export default FRC20DetailCard;

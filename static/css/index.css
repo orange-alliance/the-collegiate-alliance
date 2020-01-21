@@ -6,7 +6,7 @@ a, a:visited {
 }
 
 .nav-active {
-  color: rgb(1, 155, 66) !important;
+  color: rgb(0, 156, 215) !important;
 }
 
 .nav-active > div {
@@ -14,7 +14,7 @@ a, a:visited {
 }
 
 .nav-active > .MuiListItemIcon-root {
-  color: rgb(1, 155, 66) !important;
+  color: rgb(0, 156, 215) !important;
 }
 
 .MuiTypography-body1 > a, .MuiTypography-body2 > a:link {
@@ -26,7 +26,7 @@ a, a:visited {
 }
 
 .MuiTypography-body1 > a:hover, .MuiTypography-body2 > a:hover {
-  color: rgb(1, 155, 66) !important;
+  color: rgb(0, 156, 215) !important;
 }
 
 .MuiButtonBase-root, .MuiPaper-root {
@@ -34,7 +34,7 @@ a, a:visited {
 }
 
 a:hover > .MuiButtonBase-root, a:hover > .MuiButtonBase-root > .MuiPaper-root {
-  color: rgb(1, 155, 66) !important;
+  color: rgb(0, 156, 215) !important;
 }
 
 @media screen and (max-width: 960px) {

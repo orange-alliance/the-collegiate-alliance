@@ -16,7 +16,7 @@ export default class App extends React.Component {
     return (
       <div>
         <ThemeProvider theme={AppTheme}>
-          <ResponsiveDrawer appRoutes={AppRoutes} title={"The Global Alliance"} logo={FGC_LOGO} view={<AppRouter appRoutes={AppRoutes} />}/>
+          <ResponsiveDrawer appRoutes={AppRoutes} title={"The Collegiate Alliance"} logo={FGC_LOGO} view={<AppRouter appRoutes={AppRoutes} />}/>
         </ThemeProvider>
       </div>
     );

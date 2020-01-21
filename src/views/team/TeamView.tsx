@@ -6,7 +6,6 @@ import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent/CardContent";
 import TeamHeaderCard from "../../components/TeamHeaderCard";
-import EventSelectorCard from "../../components/EventSelectorCard";
 import TeamResultsModule from "../../modules/TeamResultsModule";
 
 import {ApplicationActions, ISetCompleteTeam, setCompleteTeam} from "../../store/Actions";
@@ -72,9 +71,6 @@ class TeamView extends React.Component<IProps> {
         <Grid container={true} spacing={3} style={styles.grid}>
           <Grid item={true} xs={12} sm={12} md={8}>
             <TeamHeaderCard team={completeTeam.team} rank={rank}/>
-          </Grid>
-          <Grid item={true} xs={12} sm={12} md={4}>
-            <EventSelectorCard/>
           </Grid>
           <Grid item={true} xs={12} sm={12} md={12}>
             <Card>

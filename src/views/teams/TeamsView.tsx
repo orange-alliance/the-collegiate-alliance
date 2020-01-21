@@ -48,7 +48,7 @@ class TeamsView extends React.Component<IProps> {
     const {teams} = this.props;
     return (
       <Container maxWidth={false} style={styles.container}>
-        <Typography variant={'h3'}>Countries Participating</Typography>
+        <Typography variant={'h3'}>Teams Participating</Typography>
         {/* Teams display */}
         <Card style={styles.card}>
           <CardContent>

@@ -5,7 +5,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 
-import {Ranking, OceanOpportunitiesRank} from "@the-orange-alliance/lib-ems";
+import {Ranking, InfiniteRechargeRank} from "@the-orange-alliance/lib-ems";
 import ButtonBase from "@material-ui/core/ButtonBase/ButtonBase";
 import {Link} from "react-router-dom";
 
@@ -25,7 +25,7 @@ interface IProps {
   rankings: Ranking[];
 }
 
-class OceanOpportunitiesRankingTable extends React.Component<IProps> {
+class FRC20RankingTable extends React.Component<IProps> {
   constructor(props: any) {
     super(props);
   }
@@ -34,22 +34,26 @@ class OceanOpportunitiesRankingTable extends React.Component<IProps> {
     const {rankings} = this.props;
     const rankingsView = rankings.map((ranking: Ranking) => {
       const name = typeof ranking.team !== "undefined" ? ranking.team.teamNameShort : ranking.teamKey;
-      const rank: OceanOpportunitiesRank = ranking as OceanOpportunitiesRank;
+      const rank: InfiniteRechargeRank = ranking as InfiniteRechargeRank;
       return (
         <TableRow key={rank.rankKey}>
           <TableCell>#{rank.rank}</TableCell>
           <TableCell>
-            <Link to={`/team/${ranking.teamKey}`}>
+            <Link to={`/team/${rank.teamKey}`}>
               <ButtonBase focusRipple={true} style={styles.buttonLink}>
                 {name}
               </ButtonBase>
             </Link>
             </TableCell>
+          <TableCell>{rank.rank}</TableCell>
+          <TableCell>{rank.team.teamKey}</TableCell>
           <TableCell>{rank.rankingPoints}</TableCell>
-          <TableCell>{rank.wins}-{rank.losses}-{rank.ties}</TableCell>
-          <TableCell>{rank.totalPoints}</TableCell>
-          <TableCell>{rank.coopertitionPoints}</TableCell>
+          <TableCell>{rank.rankingScore}</TableCell>
+          <TableCell>{rank.autoPoints}</TableCell>
+          <TableCell>{rank.telePoints}</TableCell>
+          <TableCell>{rank.endPoints}</TableCell>
           <TableCell>{rank.played}</TableCell>
+          <TableCell>{rank.wins}-{rank.losses}-{rank.ties}</TableCell>
         </TableRow>
       );
     });
@@ -58,12 +62,14 @@ class OceanOpportunitiesRankingTable extends React.Component<IProps> {
         <TableHead style={styles.header}>
           <TableRow>
             <TableCell style={styles.headerCell}>Rank</TableCell>
-            <TableCell style={styles.headerCell}>Team</TableCell>
+            <TableCell style={styles.headerCell}>Team #</TableCell>
             <TableCell style={styles.headerCell}>Ranking Points</TableCell>
-            <TableCell style={styles.headerCell}>Record (W-L-T)</TableCell>
-            <TableCell style={styles.headerCell}>Total Points</TableCell>
-            <TableCell style={styles.headerCell}>Coopertition Bonuses</TableCell>
+            <TableCell style={styles.headerCell}>Ranking Score</TableCell>
+            <TableCell style={styles.headerCell}>Auto</TableCell>
+            <TableCell style={styles.headerCell}>Tele</TableCell>
+            <TableCell style={styles.headerCell}>End</TableCell>
             <TableCell style={styles.headerCell}>Matches Played</TableCell>
+            <TableCell style={styles.headerCell}>Record (W-L-T)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -74,4 +80,4 @@ class OceanOpportunitiesRankingTable extends React.Component<IProps> {
   }
 }
 
-export default OceanOpportunitiesRankingTable;
+export default FRC20RankingTable;

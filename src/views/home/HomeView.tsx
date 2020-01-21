@@ -73,7 +73,7 @@ class HomeView extends React.Component<IProps> {
         <Banner/>
         <Container style={styles.container}>
           <Typography variant={'h3'}>Home</Typography>
-          <Typography paragraph={true}>The Global Alliance is the official provider of score results for <i>FIRST</i> Global.</Typography>
+          <Typography paragraph={true}>The Collegiate Alliance is the official provider of score results for <i>FIRST</i> Collegiate Competition.</Typography>
           <Grid container={true} spacing={3}>
             <Grid item={true} xs={12} sm={6}>
               {/* Left Grid Content */}

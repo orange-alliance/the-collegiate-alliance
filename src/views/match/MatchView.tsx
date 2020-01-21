@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import AppTheme from "../../AppTheme";
 import MatchCardModule from "../../modules/MatchCardModule";
-import OceanOpportunitiesDetailCard from "../../components/game-specific/OceanOpportunitiesDetailCard";
+import FRC20DetailCard from "../../components/game-specific/FRC20DetailCard";
 
 import {ApplicationActions, ISetCompleteMatch, setCompleteMatch} from "../../store/Actions";
 import {IApplicationState} from "../../store/Models";
@@ -52,7 +52,7 @@ class MatchView extends React.Component<IProps> {
             <MatchCardModule match={completeMatch}/>
           </Grid>
           <Grid item={true} xs={12} sm={12} md={6}>
-            <OceanOpportunitiesDetailCard match={completeMatch}/>
+            <FRC20DetailCard match={completeMatch}/>
           </Grid>
         </Grid>
       </Container>
