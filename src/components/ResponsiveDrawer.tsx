@@ -14,9 +14,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import { AppRoute } from "../AppRoutes";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
-import POWERED_BY_REV from "../assets/powered_by_rev.png";
+import POWERED_BY_TOA from "../assets/powered_by_toa.png";
 
 const drawerWidth = 220;
 
@@ -102,7 +102,9 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps) {
       </List>
       <Divider />
       <div>
-        <img src={POWERED_BY_REV} className={classes.sponsor}/>
+        <a href="https://theorangealliance.org/">
+          <img src={POWERED_BY_TOA} className={classes.sponsor} alt={"powered by TOA logo"}/>
+        </a>
       </div>
     </div>
   );

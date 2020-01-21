@@ -2,7 +2,7 @@ import * as React from "react";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
-import PublicIcon from "@material-ui/icons/Public";
+import GroupIcon from '@material-ui/icons/Group';
 import AppTheme from "../AppTheme";
 import Typography from "@material-ui/core/Typography";
 
@@ -32,7 +32,7 @@ class ActiveTeamsModule extends React.Component<IProps> {
         <Grid container={true} spacing={2}>
           <Grid item={true} xs={4} sm={5} md={4} lg={3}>
             <Avatar style={styles.avatar}>
-              <PublicIcon fontSize={"large"}/>
+              <GroupIcon fontSize={"large"}/>
             </Avatar>
           </Grid>
           <Grid item={true} xs={8} sm={7} md={8} lg={9}>
@@ -41,7 +41,7 @@ class ActiveTeamsModule extends React.Component<IProps> {
                 <Typography variant={'body1'}><b>{count}</b></Typography>
               </Grid>
               <Grid item={true} xs={12}>
-                <Typography variant={'body2'} color={"textSecondary"}>Active Countries</Typography>
+                <Typography variant={'body2'} color={"textSecondary"}>Active Teams</Typography>
               </Grid>
             </Grid>
           </Grid>
