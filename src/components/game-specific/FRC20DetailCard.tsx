@@ -3,7 +3,7 @@ import {Card, Grid, Typography} from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton/Skeleton";
 import AppTheme from "../../AppTheme";
 
-import {Match, OceanOpportunitiesMatchDetails} from "@the-orange-alliance/lib-ems";
+import {Match, InfiniteRechargeMatchDetails} from "@the-orange-alliance/lib-ems";
 
 const styles = {
   headerHeaderItem: {
@@ -68,7 +68,7 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
   public render() {
     const {match} = this.props;
     const {loading} = this.state;
-    const details = match.matchDetails as OceanOpportunitiesMatchDetails;
+    const details = match.matchDetails as InfiniteRechargeMatchDetails;
     const loadingView = (
       <Grid container={true} spacing={0}>
         <Grid item={true} xs={3} style={styles.redHeaderItem}>
@@ -94,55 +94,135 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
     return loading ? loadingView : (
       <Card>
         <Grid container={true} spacing={0}>
-          {/* TELEOP HEADERS */}
+          {/* AUTO HEADERS */}
           <Grid item={true} xs={3} style={styles.redHeaderItem}>
-            <Typography align={'center'} variant={'body1'}>{details.getRedTeleScore()} Points</Typography>
+            <Typography align={'center'} variant={'body1'}>{details.getRedAutoScore()} Points</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerHeaderItem}>
-            <Typography align={'center'} variant={'body1'}>Driver-Operated</Typography>
+            <Typography align={'center'} variant={'body1'}>Autonomous</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueHeaderItem}>
-            <Typography align={'center'} variant={'body1'}>{details.getBlueTeleScore()} Points</Typography>
+            <Typography align={'center'} variant={'body1'}>{details.getBlueAutoScore()} Points</Typography>
           </Grid>
-          {/* Processing Barge - Reuse */}
+          {/* Robot1 Cross */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{details.redProcessingBargeReuse} (+{details.redProcessingBargeReuse * 6})</Typography>
+            <Typography align={'center'} variant={'body1'}>{details.redAutoRobotTwoCrossed} (+{(details.redAutoRobotTwoCrossed) ? 5 : 0})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
-            <Typography align={'center'} variant={'body1'}>Processing Barge - Reuse</Typography>
+            <Typography align={'center'} variant={'body1'}>Robot 1 Crossed</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{details.blueProcessingBargeReuse} (+{details.blueProcessingBargeReuse * 6})</Typography>
+            <Typography align={'center'} variant={'body1'}>{details.blueAutoRobotTwoCrossed} (+{(details.blueAutoRobotTwoCrossed) ? 5 : 0})</Typography>
           </Grid>
-          {/* Processing Barge - Recycle */}
+          {/* Robot2 Cross */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{details.redProcessingBargeRecycle} (+{details.redProcessingBargeRecycle * 3})</Typography>
+            <Typography align={'center'} variant={'body1'}>{details.redAutoRobotOneCrossed} (+{(details.redAutoRobotOneCrossed) ? 5 : 0})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
-            <Typography align={'center'} variant={'body1'}>Processing Barge - Recycle</Typography>
+            <Typography align={'center'} variant={'body1'}>Robot 2 Crossed</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{details.blueProcessingBargeRecycle} (+{details.blueProcessingBargeRecycle * 3})</Typography>
+            <Typography align={'center'} variant={'body1'}>{details.blueAutoRobotOneCrossed} (+{(details.blueAutoRobotOneCrossed) ? 5 : 0})</Typography>
           </Grid>
-          {/* Processing Barge - Recovery */}
+          {/* Robot3 Cross */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{details.redProcessingBargeRecovery} (+{details.redProcessingBargeRecovery * 2})</Typography>
+            <Typography align={'center'} variant={'body1'}>{details.redAutoRobotThreeCrossed} (+{(details.redAutoRobotThreeCrossed) ? 5 : 0})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
-            <Typography align={'center'} variant={'body1'}>Processing Barge - Recovery</Typography>
+            <Typography align={'center'} variant={'body1'}>Robot 3 Crossed</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{details.blueProcessingBargeRecovery} (+{details.blueProcessingBargeRecovery * 2})</Typography>
+            <Typography align={'center'} variant={'body1'}>{details.blueAutoRobotThreeCrossed} (+{(details.blueAutoRobotThreeCrossed) ? 5 : 0})</Typography>
           </Grid>
-          {/* Reduction Processing */}
+          {/* Auto Bottom Fuel */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{details.redReductionProcessing} (+{details.redReductionProcessing})</Typography>
+            <Typography align={'center'} variant={'body1'}>{details.redAutoBottomCells} (+{details.redAutoBottomCells * 2})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
-            <Typography align={'center'} variant={'body1'}>Reduction Processing</Typography>
+            <Typography align={'center'} variant={'body1'}>Bottom Cells</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{details.blueReductionProcessing} (+{details.blueReductionProcessing})</Typography>
+            <Typography align={'center'} variant={'body1'}>{details.blueAutoBottomCells} (+{details.blueAutoBottomCells * 2})</Typography>
+          </Grid>
+          {/* Auto Outer Fuel */}
+          <Grid item={true} xs={3} style={styles.redItem}>
+            <Typography align={'center'} variant={'body1'}>{details.redAutoOuterCells} (+{details.redAutoOuterCells * 4})</Typography>
+          </Grid>
+          <Grid item={true} xs={6} style={styles.headerItem}>
+            <Typography align={'center'} variant={'body1'}>Outer Cells</Typography>
+          </Grid>
+          <Grid item={true} xs={3} style={styles.blueItem}>
+            <Typography align={'center'} variant={'body1'}>{details.blueAutoOuterCells} (+{details.blueAutoOuterCells * 4})</Typography>
+          </Grid>
+          {/* Auto Inner Fuel */}
+          <Grid item={true} xs={3} style={styles.redItem}>
+            <Typography align={'center'} variant={'body1'}>{details.redAutoInnerCells} (+{details.redAutoInnerCells * 6})</Typography>
+          </Grid>
+          <Grid item={true} xs={6} style={styles.headerItem}>
+            <Typography align={'center'} variant={'body1'}>Inner Cells</Typography>
+          </Grid>
+          <Grid item={true} xs={3} style={styles.blueItem}>
+            <Typography align={'center'} variant={'body1'}>{details.blueAutoInnerCells} (+{details.blueAutoInnerCells * 6})</Typography>
+          </Grid>
+          {/* TELEOP HEADERS */}
+          <Grid item={true} xs={3} style={styles.redHeaderItem}>
+            <Typography align={'center'} variant={'body1'}>{details.getRedAutoScore()} Points</Typography>
+          </Grid>
+          <Grid item={true} xs={6} style={styles.headerHeaderItem}>
+            <Typography align={'center'} variant={'body1'}>Driver-Controlled</Typography>
+          </Grid>
+          <Grid item={true} xs={3} style={styles.blueHeaderItem}>
+            <Typography align={'center'} variant={'body1'}>{details.getBlueAutoScore()} Points</Typography>
+          </Grid>
+          {/* Tele Bottom Fuel */}
+          <Grid item={true} xs={3} style={styles.redItem}>
+            <Typography align={'center'} variant={'body1'}>{details.redTeleBottomCells} (+{details.redTeleBottomCells})</Typography>
+          </Grid>
+          <Grid item={true} xs={6} style={styles.headerItem}>
+            <Typography align={'center'} variant={'body1'}>Bottom Cells</Typography>
+          </Grid>
+          <Grid item={true} xs={3} style={styles.blueItem}>
+            <Typography align={'center'} variant={'body1'}>{details.blueTeleBottomCells} (+{details.blueTeleBottomCells})</Typography>
+          </Grid>
+          {/* Tele Outer Fuel */}
+          <Grid item={true} xs={3} style={styles.redItem}>
+            <Typography align={'center'} variant={'body1'}>{details.redTeleOuterCells} (+{details.redTeleOuterCells * 2})</Typography>
+          </Grid>
+          <Grid item={true} xs={6} style={styles.headerItem}>
+            <Typography align={'center'} variant={'body1'}>Outer Cells</Typography>
+          </Grid>
+          <Grid item={true} xs={3} style={styles.blueItem}>
+            <Typography align={'center'} variant={'body1'}>{details.blueTeleOuterCells} (+{details.blueTeleOuterCells * 2})</Typography>
+          </Grid>
+          {/* Tele Inner Fuel */}
+          <Grid item={true} xs={3} style={styles.redItem}>
+            <Typography align={'center'} variant={'body1'}>{details.redTeleInnerCells} (+{details.redTeleInnerCells * 3})</Typography>
+          </Grid>
+          <Grid item={true} xs={6} style={styles.headerItem}>
+            <Typography align={'center'} variant={'body1'}>Inner Cells</Typography>
+          </Grid>
+          <Grid item={true} xs={3} style={styles.blueItem}>
+            <Typography align={'center'} variant={'body1'}>{details.blueTeleInnerCells} (+{details.blueTeleInnerCells * 3})</Typography>
+          </Grid>
+          {/* Rotation Control */}
+          <Grid item={true} xs={3} style={styles.redItem}>
+            <Typography align={'center'} variant={'body1'}>{details.redRotationControl} (+{(details.redRotationControl) ? 10 : 0})</Typography>
+          </Grid>
+          <Grid item={true} xs={6} style={styles.headerItem}>
+            <Typography align={'center'} variant={'body1'}>Rotation Control</Typography>
+          </Grid>
+          <Grid item={true} xs={3} style={styles.blueItem}>
+            <Typography align={'center'} variant={'body1'}>{details.blueRotationControl} (+{(details.blueRotationControl) ? 10 : 0})</Typography>
+          </Grid>
+          {/* Position Control */}
+          <Grid item={true} xs={3} style={styles.redItem}>
+            <Typography align={'center'} variant={'body1'}>{details.redPositionControl} (+{(details.redPositionControl) ? 20 : 0})</Typography>
+          </Grid>
+          <Grid item={true} xs={6} style={styles.headerItem}>
+            <Typography align={'center'} variant={'body1'}>Position Control</Typography>
+          </Grid>
+          <Grid item={true} xs={3} style={styles.blueItem}>
+            <Typography align={'center'} variant={'body1'}>{details.bluePositionControl} (+{(details.bluePositionControl) ? 20 : 0})</Typography>
           </Grid>
           {/* END GAME HEADERS */}
           <Grid item={true} xs={3} style={styles.redHeaderItem}>

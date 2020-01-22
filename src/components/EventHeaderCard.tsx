@@ -8,7 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import CalendarIcon from "@material-ui/icons/CalendarToday";
 import PlaceIcon from "@material-ui/icons/Place";
 import VideoGameController from "@material-ui/icons/VideogameAsset";
-import AppTheme from "../AppTheme";
+import AppTheme, {CURRENT_SEASON_NAME} from "../AppTheme";
 
 import {Event} from "@the-orange-alliance/lib-ems";
 
@@ -69,8 +69,8 @@ class EventHeaderCard extends React.Component<IProps> {
 
   private getGameName(seasonKey: number): string {
     switch (seasonKey) {
-      case 2019:
-        return "Ocean Opportunities";
+      case 2020:
+        return CURRENT_SEASON_NAME;
       default:
         return "";
     }

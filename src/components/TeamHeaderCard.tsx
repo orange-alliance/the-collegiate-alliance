@@ -1,5 +1,5 @@
 import * as React from "react";
-import AppTheme from "../AppTheme";
+import AppTheme, {CURRENT_SEASON_NAME} from "../AppTheme";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
@@ -72,7 +72,7 @@ class TeamHeaderCard extends React.Component<IProps, IState> {
               <VideoGameController style={styles.icon}/>
             </Grid>
             <Grid item={true} xs={11}>
-              Infinite Recharge {/* TODO: Make Dynamic */}
+              {CURRENT_SEASON_NAME}
             </Grid>
           </Grid>
         </CardContent>

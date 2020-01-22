@@ -3,7 +3,7 @@ import {RouteComponentProps} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import AppTheme from "../../AppTheme";
+import AppTheme, {CURRENT_SEASON, CURRENT_SEASON_NAME} from "../../AppTheme";
 import MatchCardModule from "../../modules/MatchCardModule";
 import FRC20DetailCard from "../../components/game-specific/FRC20DetailCard";
 
@@ -46,7 +46,7 @@ class MatchView extends React.Component<IProps> {
     return (
       <Container maxWidth={false} style={styles.container}>
         <Typography variant={'h3'}>{completeMatch.matchName}</Typography>
-        <Typography variant={'h4'}>FIRST Global Championship 2019</Typography>
+        <Typography variant={'h4'}>FACC {CURRENT_SEASON_NAME} {CURRENT_SEASON}</Typography>
         <Grid container={true} spacing={3}>
           <Grid item={true} xs={12} sm={12} md={6}>
             <MatchCardModule match={completeMatch}/>
