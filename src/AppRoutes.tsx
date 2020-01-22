@@ -13,6 +13,7 @@ import StreamingView from "./views/streaming/StreamingView";
 import MatchView from "./views/match/MatchView";
 import TeamView from "./views/team/TeamView";
 import RankingsView from "./views/rankings/RankingsView"
+import {CURRENT_SEASON} from "./AppTheme";
 
 export interface AppRoute {
   name: string;
@@ -44,7 +45,7 @@ const appRoutes: AppRoute[] = [
     menuIcon: <ListIcon/>
   },
   {
-    name: "Events",
+    name: CURRENT_SEASON + " Event",
     path: '/events',
     exact: false,
     component: (routeProps: RouteComponentProps) => <EventsView routeProps={routeProps}/>,

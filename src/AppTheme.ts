@@ -1,6 +1,6 @@
 import {createMuiTheme} from "@material-ui/core/styles";
 
-export const CURRENT_SEASON = "2019";
+export const CURRENT_SEASON = "2020";
 
 export default createMuiTheme({
   palette: {

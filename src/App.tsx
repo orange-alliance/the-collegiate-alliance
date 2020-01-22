@@ -5,7 +5,7 @@ import AppRoutes from "./AppRoutes";
 import ResponsiveDrawer from "./components/ResponsiveDrawer";
 import { ThemeProvider } from '@material-ui/styles';
 
-import IR_LOGO from "./assets/FIRST-InfiniteRecharge-Logo-Horz.png";
+import FACC_LOGO from "./assets/facc_logo_black_horz.png";
 
 export default class App extends React.Component {
   constructor(props: any) {
@@ -16,7 +16,7 @@ export default class App extends React.Component {
     return (
       <div>
         <ThemeProvider theme={AppTheme}>
-          <ResponsiveDrawer appRoutes={AppRoutes} title={"The Collegiate Alliance"} logo={IR_LOGO} view={<AppRouter appRoutes={AppRoutes} />}/>
+          <ResponsiveDrawer appRoutes={AppRoutes} title={"The Collegiate Alliance"} logo={FACC_LOGO} view={<AppRouter appRoutes={AppRoutes} />}/>
         </ThemeProvider>
       </div>
     );

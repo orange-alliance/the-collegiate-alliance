@@ -2,22 +2,27 @@ import * as React from "react";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
-import AppTheme from "../AppTheme";
+import AppTheme, {CURRENT_SEASON} from "../AppTheme";
 import Typography from "@material-ui/core/Typography";
-import PublicIcon from "@material-ui/icons/Public";
 
 import {Team} from "@the-orange-alliance/lib-ems";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
+import POWERED_BY_TOA from "../assets/powered_by_toa.png";
 
 const styles = {
   avatar: {
     margin: AppTheme.spacing(1),
-    padding: AppTheme.spacing(1),
-    border: `1px solid ${AppTheme.palette.secondary.main}`
+    //padding: AppTheme.spacing(1),
+    border: `1px solid ${AppTheme.palette.secondary.main}`,
+    width: AppTheme.spacing(7),
+    height: AppTheme.spacing(7),
   },
   text: {
     margin: AppTheme.spacing(1)
+  },
+  logos: {
+    width: '110%'
   }
 };
 
@@ -40,7 +45,8 @@ class TeamPaper extends React.Component<IProps> {
               <Grid item={true} xs={3} sm={3} md={3}>
                 <Avatar style={styles.avatar}>
                   {/*<PublicIcon fontSize={"large"}/>*/}
-                  <Typography variant={'body1'}><span className={`flag-icon flag-icon-${team.countryCode}`}/></Typography>
+                  {/*<Typography variant={'body1'}><span className={`flag-icon flag-icon-${team.countryCode}`}/></Typography>*/}
+                  <img src={require(`../assets/team-logos/${CURRENT_SEASON}/${team.countryCode}`)} style={styles.logos}/>
                 </Avatar>
               </Grid>
               <Grid item={true} xs={9} sm={9} md={9}>
@@ -49,7 +55,10 @@ class TeamPaper extends React.Component<IProps> {
                     <Typography display={'inline'} variant={'body1'}><b>{team.teamNameShort}</b></Typography>
                   </Grid>
                   <Grid item={true} xs={12}>
-                    <Typography variant={'body2'} color={"textSecondary"}>({team.country}) {team.city}</Typography>
+                    <Typography variant={'body2'} color={"textSecondary"}>{team.teamNameLong}</Typography>
+                  </Grid>
+                  <Grid item={true} xs={12}>
+                    <Typography variant={'body2'} color={"textSecondary"}><b>{team.city}, {team.stateProv}</b></Typography>
                   </Grid>
                 </Grid>
               </Grid>
