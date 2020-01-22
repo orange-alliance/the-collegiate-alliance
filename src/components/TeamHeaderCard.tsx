@@ -48,6 +48,7 @@ class TeamHeaderCard extends React.Component<IProps, IState> {
       <Card style={styles.card}>
         <CardContent>
           <Typography variant={'h5'}>{team.teamNameShort}</Typography>
+          <Typography variant={'body2'} color={"textSecondary"}>{team.teamNameLong}</Typography>
         </CardContent>
         <Divider/>
         <CardContent>
@@ -64,24 +65,14 @@ class TeamHeaderCard extends React.Component<IProps, IState> {
               <PlaceIcon style={styles.icon}/>
             </Grid>
             <Grid item={true} xs={11}>
-              {team.city}, {team.country}
+              {team.city}, {team.stateProv}
             </Grid>
             {/* Event Game */}
             <Grid item={true} xs={1}>
               <VideoGameController style={styles.icon}/>
             </Grid>
             <Grid item={true} xs={11}>
-              Ocean Opportunities
-            </Grid>
-            {/* Team Ranking */}
-            <Grid item={true} xs={1}>
-              <ListIcon style={styles.icon}/>
-            </Grid>
-            <Grid item={true} xs={11}>
-              {
-                rank.teamKey > 0 &&
-                <span>Rank {rank.rank} with a record of {`${rank.wins}-${rank.losses}-${rank.ties}`}</span>
-              }
+              Infinite Recharge {/* TODO: Make Dynamic */}
             </Grid>
           </Grid>
         </CardContent>
