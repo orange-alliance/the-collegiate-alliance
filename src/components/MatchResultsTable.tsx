@@ -2,7 +2,7 @@ import * as React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import PlayCircleIcon from "@material-ui/icons/PlayCircleOutlineOutlined";
-import AppTheme from "../AppTheme";
+import AppTheme, {CURRENT_SEASON} from "../AppTheme";
 import Divider from "@material-ui/core/Divider";
 import {Link, NavLink} from "react-router-dom";
 
@@ -44,6 +44,9 @@ const styles = {
   },
   noVideo: {
     color: '#e6e6e6'
+  },
+  logos: {
+    width: '110%'
   }
 };
 
@@ -127,8 +130,8 @@ class MatchResultsTable extends React.Component<IProps> {
         <Grid key={p.matchParticipantKey} item={true} xs={redTeams.length <= 3 ? 4 : 3} sm={redTeams.length <= 3 ? 4 : 3} md={redTeams.length <= 3 ? 2 : 'auto'} style={styles.redItem} className={'expandedTeamItem'}>
           <Link to={`/team/${p.teamKey}`}>
             <ButtonBase focusRipple={true}>
-              {!p.team && <Typography align={"center"} variant={"body1"}>{name}</Typography>}
-              {p.team && <Typography align={"center"} variant={'body1'}><span className={`flag-icon flag-icon-${p.team.countryCode}`}/> {name}</Typography>}
+              {!p.team && <Typography align={"center"} variant={"body1"}>{p.teamKey}</Typography>}
+              {p.team && <Typography align={"center"} variant={'body1'}><img src={require(`../assets/team-logos/${CURRENT_SEASON}/${p.team.countryCode}`)} style={styles.logos}/> {p.teamKey}</Typography>}
             </ButtonBase>
           </Link>
         </Grid>

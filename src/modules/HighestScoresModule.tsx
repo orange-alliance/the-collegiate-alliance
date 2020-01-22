@@ -2,7 +2,7 @@ import * as React from "react";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import AppTheme from "../AppTheme";
+import AppTheme, {CURRENT_SEASON} from "../AppTheme";
 import MatchTable from "../components/MatchTable";
 
 import {Match} from "@the-orange-alliance/lib-ems";
@@ -31,7 +31,7 @@ class HighestScoresModule extends React.Component<IProps> {
     return (
       <Card style={styles.card}>
         <Typography display={"block"} variant={"body1"}><b>Leaderboards</b></Typography>
-        <Typography display={"block"} variant={"body2"}>Ocean Opportunities 2019</Typography>
+        <Typography display={"block"} variant={"body2"}>Infinite Recharge {CURRENT_SEASON}</Typography>
         <Divider style={styles.divider}/>
         {/* Highest Scoring Qualification Match */}
         <Typography display={"block"} variant={"h6"}>Highest Scoring Ranking Match</Typography>

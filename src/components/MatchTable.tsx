@@ -2,7 +2,7 @@ import * as React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import AppTheme from "../AppTheme";
+import AppTheme, {CURRENT_SEASON} from "../AppTheme";
 import Skeleton from "@material-ui/lab/Skeleton/Skeleton";
 
 import {Match, MatchParticipant} from "@the-orange-alliance/lib-ems";
@@ -30,6 +30,9 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  logos: {
+    width: '110%'
   }
 };
 
@@ -79,8 +82,8 @@ class MatchTable extends React.Component<IProps, IState> {
           <Link to={`/team/${p.teamKey}`}>
             <ButtonBase focusRipple={true}>
               <Paper square={true} style={styles.redItem}>
-                {!p.team && <Typography align={"center"} variant={"body1"}>{name}</Typography>}
-                {p.team && <Typography align={"center"} variant={'body1'}><span className={`flag-icon flag-icon-${p.team.countryCode}`}/> {name}</Typography>}
+                {!p.team && <Typography align={"center"} variant={"body1"}>{p.teamKey}</Typography>}
+                {p.team && <Typography align={"center"} variant={'body1'}><img src={require(`../assets/team-logos/${CURRENT_SEASON}/${p.team.countryCode}`)} style={styles.logos}/> {p.teamKey}</Typography>}
               </Paper>
             </ButtonBase>
           </Link>
@@ -95,8 +98,8 @@ class MatchTable extends React.Component<IProps, IState> {
           <Link to={`/team/${p.teamKey}`}>
             <ButtonBase focusRipple={true}>
               <Paper square={true} style={styles.blueItem}>
-                {!p.team && <Typography align={"center"} variant={"body1"}>{name}</Typography>}
-                {p.team && <Typography align={"center"} variant={'body1'}><span className={`flag-icon flag-icon-${p.team.countryCode}`}/> {name}</Typography>}
+                {!p.team && <Typography align={"center"} variant={"body1"}>{p.teamKey}</Typography>}
+                {p.team && <Typography align={"center"} variant={'body1'}><img src={require(`../assets/team-logos/${CURRENT_SEASON}/${p.team.countryCode}`)} style={styles.logos}/> {p.teamKey}</Typography>}
               </Paper>
             </ButtonBase>
           </Link>
