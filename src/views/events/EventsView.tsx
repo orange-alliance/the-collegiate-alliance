@@ -123,10 +123,8 @@ class EventsView extends React.Component<IProps, IState> {
 
 export function getEventTypeFromKey(seasonKey: string): EventType | undefined {
   switch (seasonKey) {
-    case "2018":
-      return "fgc_2018";
-    case "2019":
-      return "fgc_2019";
+    case "2020":
+      return "frc_20";
     default:
       return undefined;
   }

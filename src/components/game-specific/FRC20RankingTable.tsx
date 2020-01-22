@@ -38,15 +38,7 @@ class FRC20RankingTable extends React.Component<IProps> {
       return (
         <TableRow key={rank.rankKey}>
           <TableCell>#{rank.rank}</TableCell>
-          <TableCell>
-            <Link to={`/team/${rank.teamKey}`}>
-              <ButtonBase focusRipple={true} style={styles.buttonLink}>
-                {name}
-              </ButtonBase>
-            </Link>
-            </TableCell>
-          <TableCell>{rank.rank}</TableCell>
-          <TableCell>{rank.team.teamKey}</TableCell>
+          <TableCell><Link to={`/team/${rank.teamKey}`}><ButtonBase focusRipple={true} style={styles.buttonLink}>{name}</ButtonBase></Link></TableCell>
           <TableCell>{rank.rankingPoints}</TableCell>
           <TableCell>{rank.rankingScore}</TableCell>
           <TableCell>{rank.autoPoints}</TableCell>
@@ -62,7 +54,7 @@ class FRC20RankingTable extends React.Component<IProps> {
         <TableHead style={styles.header}>
           <TableRow>
             <TableCell style={styles.headerCell}>Rank</TableCell>
-            <TableCell style={styles.headerCell}>Team #</TableCell>
+            <TableCell style={styles.headerCell}>Team</TableCell>
             <TableCell style={styles.headerCell}>Ranking Points</TableCell>
             <TableCell style={styles.headerCell}>Ranking Score</TableCell>
             <TableCell style={styles.headerCell}>Auto</TableCell>

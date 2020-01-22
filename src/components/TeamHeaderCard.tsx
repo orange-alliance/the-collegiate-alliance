@@ -43,6 +43,7 @@ class TeamHeaderCard extends React.Component<IProps, IState> {
 
   public render() {
     const {team, rank} = this.props;
+    console.log(team);
     return (
       <Card style={styles.card}>
         <CardContent>
@@ -55,8 +56,8 @@ class TeamHeaderCard extends React.Component<IProps, IState> {
             <Grid item={true} xs={1}>
               <CalendarIcon style={styles.icon}/>
             </Grid>
-            <Grid item={true} xs={11}>
-              October 25th, 2019 - October 27th, 2019
+            <Grid item={true} xs={11}> {/* TODO: Make Dynamic */}
+              February 2nd, 2020
             </Grid>
             {/* Event Location/Venue */}
             <Grid item={true} xs={1}>

@@ -1,6 +1,7 @@
 import {createMuiTheme} from "@material-ui/core/styles";
 
 export const CURRENT_SEASON = "2020";
+export const CURRENT_SEASON_EVENT_ID = "2020-FCC-FER";
 
 export default createMuiTheme({
   palette: {

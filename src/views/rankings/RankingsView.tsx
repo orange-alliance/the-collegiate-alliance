@@ -7,6 +7,7 @@ import {IApplicationState} from "../../store/Models";
 import {getEventTypeFromKey} from "../events/EventsView";
 import {connect} from "react-redux";
 import EventRankingsModule from "../../modules/EventRankingsModule";
+import {CURRENT_SEASON, CURRENT_SEASON_EVENT_ID} from "../../AppTheme";
 
 const TIME = 10000;
 
@@ -35,7 +36,7 @@ class RankingsView extends React.Component<IProps, IState> {
 
   public componentDidMount() {
     const {setRankings} = this.props;
-    FGCProvider.getRankingTeams("2019-FGC-DUB", getEventTypeFromKey("2019")).then((rankings: Ranking[]) => {
+    FGCProvider.getRankingTeams(CURRENT_SEASON_EVENT_ID, getEventTypeFromKey(CURRENT_SEASON)).then((rankings: Ranking[]) => {
       setRankings(rankings);
       global.setInterval(() => {
         if (this._start + this._itemsPerCycle <= rankings.length) {
@@ -43,7 +44,7 @@ class RankingsView extends React.Component<IProps, IState> {
           this.setState({index: this._start});
           this.forceUpdate();
         } else {
-          FGCProvider.getRankingTeams("2019-FGC-DUB", getEventTypeFromKey("2019")).then((rankings: Ranking[]) => {
+          FGCProvider.getRankingTeams(CURRENT_SEASON_EVENT_ID, getEventTypeFromKey(CURRENT_SEASON)).then((rankings: Ranking[]) => {
             setRankings(rankings);
             this._start = 0;
             this.setState({index: this._start});
