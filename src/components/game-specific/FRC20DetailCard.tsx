@@ -166,13 +166,13 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
           </Grid>
           {/* TELEOP HEADERS */}
           <Grid item={true} xs={3} style={styles.redHeaderItem}>
-            <Typography align={'center'} variant={'body1'}>{details.getRedAutoScore()} Points</Typography>
+            <Typography align={'center'} variant={'body1'}>{details.getRedTeleScore()} Points</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerHeaderItem}>
             <Typography align={'center'} variant={'body1'}>Driver-Controlled</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueHeaderItem}>
-            <Typography align={'center'} variant={'body1'}>{details.getBlueAutoScore()} Points</Typography>
+            <Typography align={'center'} variant={'body1'}>{details.getBlueTeleScore()} Points</Typography>
           </Grid>
           {/* Tele Bottom Fuel */}
           <Grid item={true} xs={3} style={styles.redItem}>
@@ -236,33 +236,43 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
           </Grid>
           {/* Robot 1 Status */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{this.getDockingText(details.redEndRobotOneDocking)} (+{this.getDockingPoints(details.redEndRobotOneDocking)})</Typography>
+            <Typography align={'center'} variant={'body1'}>{this.getEndText(details.redEndRobotOneStatus)} (+{this.getEndPoints(details.redEndRobotOneStatus)})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
-            <Typography align={'center'} variant={'body1'}>Robot 1 Status</Typography>
+            <Typography align={'center'} variant={'body1'}>Robot 1</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{this.getDockingText(details.blueEndRobotOneDocking)} (+{this.getDockingPoints(details.blueEndRobotOneDocking)})</Typography>
+            <Typography align={'center'} variant={'body1'}>{this.getEndText(details.blueEndRobotOneStatus)} (+{this.getEndPoints(details.blueEndRobotOneStatus)})</Typography>
           </Grid>
           {/* Robot 2 Status */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{this.getDockingText(details.redEndRobotTwoDocking)} (+{this.getDockingPoints(details.redEndRobotTwoDocking)})</Typography>
+            <Typography align={'center'} variant={'body1'}>{this.getEndText(details.redEndRobotTwoStatus)} (+{this.getEndPoints(details.redEndRobotTwoStatus)})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
-            <Typography align={'center'} variant={'body1'}>Robot 2 Status</Typography>
+            <Typography align={'center'} variant={'body1'}>Robot 1</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{this.getDockingText(details.blueEndRobotTwoDocking)} (+{this.getDockingPoints(details.blueEndRobotTwoDocking)})</Typography>
+            <Typography align={'center'} variant={'body1'}>{this.getEndText(details.blueEndRobotTwoStatus)} (+{this.getEndPoints(details.blueEndRobotTwoStatus)})</Typography>
           </Grid>
           {/* Robot 3 Status */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{this.getDockingText(details.redEndRobotThreeDocking)} (+{this.getDockingPoints(details.redEndRobotThreeDocking)})</Typography>
+            <Typography align={'center'} variant={'body1'}>{this.getEndText(details.redEndRobotThreeStatus)} (+{this.getEndPoints(details.redEndRobotThreeStatus)})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
-            <Typography align={'center'} variant={'body1'}>Robot 3 Status</Typography>
+            <Typography align={'center'} variant={'body1'}>Robot 1</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{this.getDockingText(details.blueEndRobotThreeDocking)} (+{this.getDockingPoints(details.blueEndRobotThreeDocking)})</Typography>
+            <Typography align={'center'} variant={'body1'}>{this.getEndText(details.blueEndRobotThreeStatus)} (+{this.getEndPoints(details.blueEndRobotThreeStatus)})</Typography>
+          </Grid>
+          {/* Level */}
+          <Grid item={true} xs={3} style={styles.redItem}>
+            <Typography align={'center'} variant={'body1'}>{details.redEndEqualized} (+{(details.redEndEqualized) ? 15 : 0})</Typography>
+          </Grid>
+          <Grid item={true} xs={6} style={styles.headerItem}>
+            <Typography align={'center'} variant={'body1'}>Position Control</Typography>
+          </Grid>
+          <Grid item={true} xs={3} style={styles.blueItem}>
+            <Typography align={'center'} variant={'body1'}>{details.blueEndEqualized} (+{(details.blueEndEqualized) ? 15 : 0})</Typography>
           </Grid>
           {/* PENALTY HEADERS */}
           <Grid item={true} xs={3} style={styles.redHeaderItem}>
@@ -279,31 +289,27 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
     );
   }
 
-  private getDockingText(state: number): string {
-    if (state === 0) {
-      return "Not Parked";
-    } else if (state === 1) {
-      return "Partially Parked";
-    } else if (state === 2) {
-      return "Fully Parked";
-    } else if (state === 3) {
-      return "Fully Elevated";
-    } else {
-      return "Not Parked";
+  private getEndText(state: number): string {
+    switch (state) {
+      case 0:
+        return "None";
+      case 1:
+        return "Parked";
+      case 2:
+        return "Hanging";
+      default:
+        return "Not Parked";
     }
   }
 
-  private getDockingPoints(state: number): number {
-    if (state === 0) {
-      return 0;
-    } else if (state === 1) {
-      return 5;
-    } else if (state === 2) {
-      return 10;
-    } else if (state === 3) {
-      return 20;
-    } else {
-      return 0;
+  private getEndPoints(state: number): number {
+    switch (state) {
+      case 0:
+        return 0;
+      case 1:
+        return 25;
+      default:
+        return 0;
     }
   }
 }
