@@ -52,6 +52,7 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
   public componentWillMount(): void {
     const {match} = this.props;
     const {loading} = this.state;
+    console.log(match.matchDetails);
     if (typeof match.matchDetails !== "undefined" && loading) {
       this.setState({loading: false});
     }
@@ -106,33 +107,33 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
           </Grid>
           {/* Robot1 Cross */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{details.redAutoRobotTwoCrossed} (+{(details.redAutoRobotTwoCrossed) ? 5 : 0})</Typography>
+            <Typography align={'center'} variant={'body1'}>{(details.redAutoRobotTwoCrossed) ? "✔": "✖"} (+{(details.redAutoRobotTwoCrossed) ? 5 : 0})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
             <Typography align={'center'} variant={'body1'}>Robot 1 Crossed</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{details.blueAutoRobotTwoCrossed} (+{(details.blueAutoRobotTwoCrossed) ? 5 : 0})</Typography>
+            <Typography align={'center'} variant={'body1'}>{(details.blueAutoRobotTwoCrossed) ? "✔": "✖"} (+{(details.blueAutoRobotTwoCrossed) ? 5 : 0})</Typography>
           </Grid>
           {/* Robot2 Cross */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{details.redAutoRobotOneCrossed} (+{(details.redAutoRobotOneCrossed) ? 5 : 0})</Typography>
+            <Typography align={'center'} variant={'body1'}>{(details.redAutoRobotOneCrossed) ? "✔": "✖"} (+{(details.redAutoRobotOneCrossed) ? 5 : 0})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
             <Typography align={'center'} variant={'body1'}>Robot 2 Crossed</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{details.blueAutoRobotOneCrossed} (+{(details.blueAutoRobotOneCrossed) ? 5 : 0})</Typography>
+            <Typography align={'center'} variant={'body1'}>{(details.blueAutoRobotOneCrossed) ? "✔": "✖"} (+{(details.blueAutoRobotOneCrossed) ? 5 : 0})</Typography>
           </Grid>
           {/* Robot3 Cross */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{details.redAutoRobotThreeCrossed} (+{(details.redAutoRobotThreeCrossed) ? 5 : 0})</Typography>
+            <Typography align={'center'} variant={'body1'}>{(details.redAutoRobotThreeCrossed) ? "✔": "✖"} (+{(details.redAutoRobotThreeCrossed) ? 5 : 0})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
             <Typography align={'center'} variant={'body1'}>Robot 3 Crossed</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{details.blueAutoRobotThreeCrossed} (+{(details.blueAutoRobotThreeCrossed) ? 5 : 0})</Typography>
+            <Typography align={'center'} variant={'body1'}>{(details.blueAutoRobotThreeCrossed) ? "✔": "✖"} (+{(details.blueAutoRobotThreeCrossed) ? 5 : 0})</Typography>
           </Grid>
           {/* Auto Bottom Fuel */}
           <Grid item={true} xs={3} style={styles.redItem}>
@@ -206,23 +207,23 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
           </Grid>
           {/* Rotation Control */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{details.redRotationControl} (+{(details.redRotationControl) ? 10 : 0})</Typography>
+            <Typography align={'center'} variant={'body1'}>{(details.redRotationControl) ? "✔": "✖"} (+{(details.redRotationControl) ? 10 : 0})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
             <Typography align={'center'} variant={'body1'}>Rotation Control</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{details.blueRotationControl} (+{(details.blueRotationControl) ? 10 : 0})</Typography>
+            <Typography align={'center'} variant={'body1'}>{(details.blueRotationControl) ? "✔": "✖"} (+{(details.blueRotationControl) ? 10 : 0})</Typography>
           </Grid>
           {/* Position Control */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{details.redPositionControl} (+{(details.redPositionControl) ? 20 : 0})</Typography>
+            <Typography align={'center'} variant={'body1'}>{(details.redPositionControl) ? "✔": "✖"} (+{(details.redPositionControl) ? 20 : 0})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
             <Typography align={'center'} variant={'body1'}>Position Control</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{details.bluePositionControl} (+{(details.bluePositionControl) ? 20 : 0})</Typography>
+            <Typography align={'center'} variant={'body1'}>{(details.bluePositionControl) ? "✔": "✖"} (+{(details.bluePositionControl) ? 20 : 0})</Typography>
           </Grid>
           {/* END GAME HEADERS */}
           <Grid item={true} xs={3} style={styles.redHeaderItem}>
@@ -266,13 +267,13 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
           </Grid>
           {/* Level */}
           <Grid item={true} xs={3} style={styles.redItem}>
-            <Typography align={'center'} variant={'body1'}>{details.redEndEqualized} (+{(details.redEndEqualized) ? 15 : 0})</Typography>
+            <Typography align={'center'} variant={'body1'}>{(details.redEndEqualized) ? "✔": "✖"} (+{(details.redEndEqualized) ? 15 : 0})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
             <Typography align={'center'} variant={'body1'}>Position Control</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
-            <Typography align={'center'} variant={'body1'}>{details.blueEndEqualized} (+{(details.blueEndEqualized) ? 15 : 0})</Typography>
+            <Typography align={'center'} variant={'body1'}>{(details.blueEndEqualized) ? "✔": "✖"} (+{(details.blueEndEqualized) ? 15 : 0})</Typography>
           </Grid>
           {/* PENALTY HEADERS */}
           <Grid item={true} xs={3} style={styles.redHeaderItem}>
