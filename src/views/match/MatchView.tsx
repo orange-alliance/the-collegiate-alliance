@@ -46,7 +46,7 @@ class MatchView extends React.Component<IProps> {
     return (
       <Container maxWidth={false} style={styles.container}>
         <Typography variant={'h3'}>{completeMatch.matchName}</Typography>
-        <Typography variant={'h4'}>FACC {CURRENT_SEASON_NAME} {CURRENT_SEASON}</Typography>
+        <Typography variant={'h4'}>FACC {CURRENT_SEASON_NAME} 20{CURRENT_SEASON}</Typography>
         <Grid container={true} spacing={3}>
           <Grid item={true} xs={12} sm={12} md={6}>
             <MatchCardModule match={completeMatch}/>

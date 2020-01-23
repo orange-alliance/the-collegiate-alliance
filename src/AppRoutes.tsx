@@ -45,7 +45,7 @@ const appRoutes: AppRoute[] = [
     menuIcon: <ListIcon/>
   },
   {
-    name: CURRENT_SEASON + " Event",
+    name: "20" + CURRENT_SEASON + " Event",
     path: '/events',
     exact: false,
     component: (routeProps: RouteComponentProps) => <EventsView routeProps={routeProps}/>,
