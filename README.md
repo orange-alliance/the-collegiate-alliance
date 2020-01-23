@@ -1,5 +1,5 @@
-# The Global Alliance
-### The Global Alliance is a server-side, (progressive web-app in progress) application to display live score results for the FIRST Global Competition.
+# The Collegiate Alliance
+### The Collegiate Alliance is a server-side, (progressive web-app in progress) application to display live score results for the FIRST Alumni Collegiate Competition.
 
 Install dependencies:
 
