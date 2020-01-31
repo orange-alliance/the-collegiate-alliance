@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../build/server'),
     filename: 'index.js',
-    publicPath: '../../'
+    publicPath: '../../',
   },
   module: {
     rules: [

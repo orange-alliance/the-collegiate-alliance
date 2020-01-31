@@ -27,6 +27,7 @@ import {createStore} from "redux";
 import {Provider} from "react-redux";
 import {IApplicationState} from "./src/store/Models";
 import appReducer, {initialState} from "./src/store/Reducer";
+import * as http from "http";
 
 const app: Application = express();
 
@@ -154,9 +155,12 @@ function prepareCompleteTeam(cTeam: ICompleteTeamResponse) {
 }
 
 // Start HTTP server
-console.log("HTTP server listening on port 80");
-app.listen(80);
+http.createServer(app).listen({
+  port: 80,
+  host: '0.0.0.0'
+}, () => console.log("HTTP server listening on port 80"));
 
+// Check for a HTTPS Cert on User's computer. If it's there, we'll serve HTTPS.
 if (fs.existsSync('/etc/letsencrypt/live/live.firstalumnicollegiatecomp.org/cert.pem')) {
   // We see a cert, lets open https server
   https.createServer({
