@@ -32,7 +32,7 @@ import * as http from "http";
 const app: Application = express();
 const apiIp = "live.firstalumnicollegiatecomp.org";
 
-FGCProvider.initialize(apiIp, 8443);
+FGCProvider.initialize(apiIp, 8443, 'https');
 // FGCProvider.initialize("127.0.0.1", 8088);
 
 // app.use('/api/*', (req: any, res: any) => {
