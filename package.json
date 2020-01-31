@@ -7,6 +7,9 @@
     "build-client": "webpack --config ./config/webpack.client.config.js",
     "build-server": "webpack --config ./config/webpack.server.config.js",
     "build": "npm run build-client && npm run build-server",
+    "build-client-prod": "webpack --config ./config/webpack.client.config.js --mode=production",
+	"build-server-prod": "webpack --config ./config/webpack.server.config.js --mode=production",
+    "build-prod": "npm run build-client-prod && npm run build-server-prod",
     "start": "nodemon build/server/index.js --config nodemon.json"
   },
   "author": "Kyle Flynn",
