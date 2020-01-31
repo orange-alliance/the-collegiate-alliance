@@ -9,6 +9,7 @@ import {Match, MatchParticipant} from "@the-orange-alliance/lib-ems";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
 import ButtonBase from "@material-ui/core/ButtonBase";
+import TeamImage from "./TeamImage";
 
 const styles = {
   headerItem: {
@@ -30,9 +31,6 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  logos: {
-    width: '110%'
   }
 };
 
@@ -83,7 +81,7 @@ class MatchTable extends React.Component<IProps, IState> {
             <ButtonBase focusRipple={true}>
               <Paper square={true} style={styles.redItem}>
                 {!p.team && <Typography align={"center"} variant={"body1"}>{p.teamKey}</Typography>}
-                {p.team && <Typography align={"center"} variant={'body1'}><img src={require(`../assets/team-logos/${CURRENT_SEASON}/${p.team.countryCode}`)} style={styles.logos}/> {p.teamKey}</Typography>}
+                {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.teamKey}</Typography>}
               </Paper>
             </ButtonBase>
           </Link>
@@ -99,7 +97,7 @@ class MatchTable extends React.Component<IProps, IState> {
             <ButtonBase focusRipple={true}>
               <Paper square={true} style={styles.blueItem}>
                 {!p.team && <Typography align={"center"} variant={"body1"}>{p.teamKey}</Typography>}
-                {p.team && <Typography align={"center"} variant={'body1'}><img src={require(`../assets/team-logos/${CURRENT_SEASON}/${p.team.countryCode}`)} style={styles.logos}/> {p.teamKey}</Typography>}
+                {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.teamKey}</Typography>}
               </Paper>
             </ButtonBase>
           </Link>

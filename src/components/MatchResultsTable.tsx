@@ -8,6 +8,7 @@ import {Link, NavLink} from "react-router-dom";
 
 import {Match, MatchParticipant} from "@the-orange-alliance/lib-ems";
 import ButtonBase from "@material-ui/core/ButtonBase";
+import TeamImage from "./TeamImage";
 
 interface IProps {
   matches: Match[];
@@ -44,9 +45,6 @@ const styles = {
   },
   noVideo: {
     color: '#e6e6e6'
-  },
-  logos: {
-    width: '110%'
   }
 };
 
@@ -131,7 +129,7 @@ class MatchResultsTable extends React.Component<IProps> {
           <Link to={`/team/${p.teamKey}`}>
             <ButtonBase focusRipple={true}>
               {!p.team && <Typography align={"center"} variant={"body1"}>{p.teamKey}</Typography>}
-              {p.team && <Typography align={"center"} variant={'body1'}><img src={require(`../assets/team-logos/${CURRENT_SEASON}/${p.team.countryCode}`)} style={styles.logos}/> {p.teamKey}</Typography>}
+              {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.teamKey}</Typography>}
             </ButtonBase>
           </Link>
         </Grid>

@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import {Team} from "@the-orange-alliance/lib-ems";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
+import TeamImage from "./TeamImage";
 
 const styles = {
   avatar: {
@@ -19,9 +20,6 @@ const styles = {
   },
   text: {
     margin: AppTheme.spacing(1)
-  },
-  logos: {
-    width: '110%'
   }
 };
 
@@ -43,7 +41,7 @@ class TeamPaper extends React.Component<IProps> {
             <Grid container={true} spacing={1}>
               <Grid item={true} xs={3} sm={3} md={3}>
                 <Avatar style={styles.avatar}>
-                  <img src={require(`../assets/team-logos/${CURRENT_SEASON}/${team.countryCode}`)} style={styles.logos}/>
+                  <TeamImage team={team}/>
                 </Avatar>
               </Grid>
               <Grid item={true} xs={9} sm={9} md={9}>
