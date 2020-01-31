@@ -1,16 +1,15 @@
 import * as React from "react";
-import AppTheme, {CURRENT_SEASON} from "../AppTheme";
+import {Team} from "@the-orange-alliance/lib-ems";
 
 // Team logos 2020
-import dy20 from "./assets/team-logos/20/dy.jpg";
-import fs20 from "./assets/team-logos/20/fs.jpg";
-import gv20 from "./assets/team-logos/20/gv.jpg";
-import il20 from "./assets/team-logos/20/il.jpg";
-import ke20 from "./assets/team-logos/20/ke.jpg";
-import mr20 from "./assets/team-logos/20/mr.jpg";
-import ms20 from "./assets/team-logos/20/ms.jpg";
-import os20 from "./assets/team-logos/20/os.jpg";
-import {Team} from "@the-orange-alliance/lib-ems";
+import dy20 from "../assets/team-logos/20/dy.jpg";
+import fs20 from "../assets/team-logos/20/fs.jpg";
+import gv20 from "../assets/team-logos/20/gv.jpg";
+import il20 from "../assets/team-logos/20/il.jpg";
+import ke20 from "../assets/team-logos/20/ke.jpg";
+import mr20 from "../assets/team-logos/20/mr.jpg";
+import ms20 from "../assets/team-logos/20/ms.jpg";
+import os20 from "../assets/team-logos/20/os.jpg";
 
 
 const styles = {
