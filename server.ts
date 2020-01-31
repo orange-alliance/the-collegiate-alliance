@@ -77,12 +77,12 @@ async function render(req: any, res: any, next: any) {
   } else {
     res.send(
       index
-        .replace("href=\"static/css/flag-icon.min.css", `href="http://${req.headers.host}/static/css/flag-icon.min.css`)
-        .replace("href=\"static/css/index.css", `href="http://${req.headers.host}/static/css/index.css`)
+        .replace("href=\"static/css/flag-icon.min.css", `href="${req.protocol}://${req.headers.host}/static/css/flag-icon.min.css`)
+        .replace("href=\"static/css/index.css", `href="${req.protocol}://${req.headers.host}/static/css/index.css`)
         .replace('{{{body}}}', html)
         .replace('["__AXIOS__"]', JSON.stringify(cache).replace(/</g, '\\u003c'))
         .replace('["__REDUX__"]', JSON.stringify(prepareState(state)).replace(/</g, '\\u003c'))
-        .replace("build/client/index.js", `http://${req.headers.host}/build/client/index.js`)
+        .replace("build/client/index.js", `${req.protocol}://${req.headers.host}/build/client/index.js`)
     );
   }
 }
