@@ -28,6 +28,7 @@ import {Provider} from "react-redux";
 import {IApplicationState} from "./src/store/Models";
 import appReducer, {initialState} from "./src/store/Reducer";
 import * as http from "http";
+import proxy from "express-http-proxy";
 
 const app: Application = express();
 const apiIp = "35.222.228.136";
@@ -53,6 +54,8 @@ app.get("/events/:seasonKey", render);
 app.get("/match/:matchKey", render);
 app.get("/rankings", render);
 app.get("/streams", render);
+
+app.use('/api', proxy('https://' + apiIp + ':8443/api'));
 
 async function render(req: any, res: any, next: any) {
   // Create application store.
