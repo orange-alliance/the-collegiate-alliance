@@ -1,7 +1,7 @@
 {
-  "name": "the-global-alliance",
+  "name": "the-collegiate-alliance",
   "version": "0.0.1",
-  "description": "Official Live Results For FIRST Global",
+  "description": "Official Live Results For FIRST Alumni Collegiate Competition",
   "scripts": {
     "serve": "webpack-dev-server --config ./config/webpack.client.config.js --open",
     "build-client": "webpack --config ./config/webpack.client.config.js",
