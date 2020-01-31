@@ -8,6 +8,8 @@ import * as path from "path";
 
 // App imports
 import App from "./src/App";
+import https from "https"
+import * as constants from "constants";
 import {CURRENT_SEASON} from "./src/AppTheme";
 import {getEventTypeFromKey} from "./src/views/events/EventsView";
 import {
@@ -151,6 +153,18 @@ function prepareCompleteTeam(cTeam: ICompleteTeamResponse) {
   return cTeamJSON;
 }
 
-// Start server
-console.log("Web server listening on port 80");
+// Start HTTP server
+console.log("HTTP server listening on port 80");
 app.listen(80);
+
+if (fs.existsSync('/etc/letsencrypt/live/live.firstalumnicollegiatecomp.org/cert.pem')) {
+  // We see a cert, lets open https server
+  https.createServer({
+    cert: fs.readFileSync('/etc/letsencrypt/live/live.firstalumnicollegiatecomp.org/cert.pem', 'utf8'),
+    key: fs.readFileSync('/etc/letsencrypt/live/live.firstalumnicollegiatecomp.org/privkey.pem', 'utf8'),
+    ca: fs.readFileSync('/etc/letsencrypt/live/live.firstalumnicollegiatecomp.org/fullchain.pem', 'utf8'),
+    secureOptions: constants.SSL_OP_NO_TLSv1
+  }, app).listen(443, function () {
+    console.log('HTTPS server listening on port 443')
+  });
+}
