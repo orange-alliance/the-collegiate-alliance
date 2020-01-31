@@ -30,8 +30,9 @@ import appReducer, {initialState} from "./src/store/Reducer";
 import * as http from "http";
 
 const app: Application = express();
+const apiIp = "35.222.228.136";
 
-FGCProvider.initialize("35.222.228.136", 8080);
+FGCProvider.initialize(apiIp, 8443);
 // FGCProvider.initialize("127.0.0.1", 8088);
 
 // app.use('/api/*', (req: any, res: any) => {
@@ -88,6 +89,7 @@ async function render(req: any, res: any, next: any) {
 }
 
 async function loadPageData(req: any, params?: any): Promise<IApplicationState> {
+  if(req.protocol === 'http') FGCProvider.initialize(apiIp, 8080);
   switch (req.path) {
     case "/":
       const homeTeams: Team[] = await FGCProvider.getTeamsBySeason(CURRENT_SEASON);
