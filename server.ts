@@ -28,12 +28,11 @@ import {Provider} from "react-redux";
 import {IApplicationState} from "./src/store/Models";
 import appReducer, {initialState} from "./src/store/Reducer";
 import * as http from "http";
-import proxy from "express-http-proxy";
 
 const app: Application = express();
-const apiIp = "35.222.228.136";
+const apiIp = "live.firstalumnicollegiatecomp.org";
 
-FGCProvider.initialize(apiIp, 443);
+FGCProvider.initialize(apiIp, 8443);
 // FGCProvider.initialize("127.0.0.1", 8088);
 
 // app.use('/api/*', (req: any, res: any) => {
@@ -54,8 +53,6 @@ app.get("/events/:seasonKey", render);
 app.get("/match/:matchKey", render);
 app.get("/rankings", render);
 app.get("/streams", render);
-
-app.use('/api', proxy('https://' + apiIp + ':8443/api'));
 
 async function render(req: any, res: any, next: any) {
   // Create application store.
@@ -92,7 +89,7 @@ async function render(req: any, res: any, next: any) {
 }
 
 async function loadPageData(req: any, params?: any): Promise<IApplicationState> {
-  if(req.protocol === 'http') FGCProvider.initialize(apiIp, 80);
+  if(req.protocol === 'http') FGCProvider.initialize(apiIp, 8080);
   switch (req.path) {
     case "/":
       const homeTeams: Team[] = await FGCProvider.getTeamsBySeason(CURRENT_SEASON);
