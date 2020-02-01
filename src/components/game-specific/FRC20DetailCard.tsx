@@ -308,6 +308,8 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
       case 0:
         return 0;
       case 1:
+        return 5;
+      case 2:
         return 25;
       default:
         return 0;
