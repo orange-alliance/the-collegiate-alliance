@@ -54,15 +54,15 @@ class EventsView extends React.Component<IProps, IState> {
     if (typeof event.eventCode === "undefined" || event.eventCode.length <= 0) {
       const routeKey: string = (routeProps.match.params as any).seasonKey;
       const key: string = routeKey ? routeKey : seasonKey;
-      FGCProvider.getEventBySeason(key).then((event: Event) => {
-        setEvent(event);
-        FGCProvider.getAllEventMatches(event.eventKey).then((matches: Match[]) => {
+      FGCProvider.getEventBySeason(key).then((newEvent: Event) => {
+        setEvent(newEvent);
+        FGCProvider.getAllEventMatches(newEvent.eventKey).then((matches: Match[]) => {
           setMatches(matches.filter((m: Match) => m.tournamentLevel > Match.PRACTICE_LEVEL));
         });
-        FGCProvider.getTeams(event.eventKey).then((teams: Team[]) => {
+        FGCProvider.getTeams(newEvent.eventKey).then((teams: Team[]) => {
           setTeams(teams);
         });
-        FGCProvider.getRankingTeams(event.eventKey, getEventTypeFromKey(event.season.seasonKey.toString())).then((rankings: Ranking[]) => {
+        FGCProvider.getRankingTeams(newEvent.eventKey, getEventTypeFromKey(newEvent.season.seasonKey.toString())).then((rankings: Ranking[]) => {
           setRankings(rankings);
         });
       });
@@ -81,8 +81,8 @@ class EventsView extends React.Component<IProps, IState> {
     const {event, setTeams, setEvent, setMatches, setRankings} = this.props;
     const {seasonKey} = this.state;
     if (seasonKey !== prevState.seasonKey && event.eventKey.length <= 0) {
-      FGCProvider.getEventBySeason(seasonKey).then((event: Event) => {
-        setEvent(event);
+      FGCProvider.getEventBySeason(seasonKey).then((newEvent: Event) => {
+        setEvent(newEvent);
         FGCProvider.getAllEventMatches(event.eventKey).then((matches: Match[]) => {
           setMatches(matches);
         });
@@ -123,7 +123,7 @@ class EventsView extends React.Component<IProps, IState> {
 
 export function getEventTypeFromKey(seasonKey: string): EventType | undefined {
   switch (seasonKey) {
-    case "2020":
+    case "20":
       return "frc_20";
     default:
       return undefined;

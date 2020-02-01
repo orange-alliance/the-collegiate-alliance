@@ -36,6 +36,7 @@ class RankingsView extends React.Component<IProps, IState> {
 
   public componentDidMount() {
     const {setRankings} = this.props;
+    console.log(CURRENT_SEASON_EVENT_ID, getEventTypeFromKey(CURRENT_SEASON));
     FGCProvider.getRankingTeams(CURRENT_SEASON_EVENT_ID, getEventTypeFromKey(CURRENT_SEASON)).then((rankings: Ranking[]) => {
       setRankings(rankings);
       global.setInterval(() => {
