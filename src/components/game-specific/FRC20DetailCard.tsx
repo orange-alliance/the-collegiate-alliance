@@ -270,7 +270,7 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
             <Typography align={'center'} variant={'body1'}>{(details.redEndEqualized) ? "✔": "✖"} (+{(details.redEndEqualized) ? 15 : 0})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
-            <Typography align={'center'} variant={'body1'}>Position Control</Typography>
+            <Typography align={'center'} variant={'body1'}>Hanging Level?</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
             <Typography align={'center'} variant={'body1'}>{(details.blueEndEqualized) ? "✔": "✖"} (+{(details.blueEndEqualized) ? 15 : 0})</Typography>
