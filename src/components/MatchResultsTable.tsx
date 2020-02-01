@@ -127,7 +127,7 @@ class MatchResultsTable extends React.Component<IProps> {
           <Link to={`/team/${p.teamKey}`}>
             <ButtonBase focusRipple={true}>
               {!p.team && <Typography align={"center"} variant={"body1"}>{p.teamKey}</Typography>}
-              {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.team.teamNameShort}</Typography>}
+              {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.team.robotName}</Typography>}
             </ButtonBase>
           </Link>
         </Grid>
@@ -141,7 +141,7 @@ class MatchResultsTable extends React.Component<IProps> {
           <Link to={`/team/${p.teamKey}`}>
             <ButtonBase focusRipple={true}>
               {!p.team && <Typography align={"center"} variant={"body1"}>{name}</Typography>}
-              {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.team.teamNameShort}</Typography>}
+              {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.team.robotName}</Typography>}
             </ButtonBase>
           </Link>
         </Grid>
