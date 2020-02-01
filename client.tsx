@@ -18,7 +18,7 @@ const stateCache = (window as any).__REDUX_STATE_CACHE__;
 delete (window as any).__REDUX_STATE_CACHE__;
 const isDev: boolean = true;
 
-FGCProvider.initialize("live.firstalumnicollegiatecomp.org", 8443);
+FGCProvider.initialize("live.firstalumnicollegiatecomp.org", 8443, 'https');
 // FGCProvider.initialize("127.0.0.1", 8080);
 
 let state: IApplicationState = stateCache;
