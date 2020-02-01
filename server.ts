@@ -117,7 +117,7 @@ async function loadPageData(req: any, params?: any): Promise<IApplicationState> 
       const completeMatch: Match = await FGCProvider.getCompleteMatch(req.params.matchKey);
       return {...initialState, completeMatch: completeMatch};
     case "/rankings":
-      const rankings: Ranking[] = await FGCProvider.getRankingTeams("2019-FGC-DUB", getEventTypeFromKey("2019"));
+      const rankings: Ranking[] = await FGCProvider.getRankingTeams("20-FCC-FER", getEventTypeFromKey("20"));
       return {...initialState, rankings: rankings};
       default:
       return initialState;
