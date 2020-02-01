@@ -240,7 +240,7 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
             <Typography align={'center'} variant={'body1'}>{this.getEndText(details.redEndRobotOneStatus)} (+{this.getEndPoints(details.redEndRobotOneStatus)})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
-            <Typography align={'center'} variant={'body1'}>Robot 1</Typography>
+            <Typography align={'center'} variant={'body1'}>Robot 1 End Status</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
             <Typography align={'center'} variant={'body1'}>{this.getEndText(details.blueEndRobotOneStatus)} (+{this.getEndPoints(details.blueEndRobotOneStatus)})</Typography>
@@ -250,7 +250,7 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
             <Typography align={'center'} variant={'body1'}>{this.getEndText(details.redEndRobotTwoStatus)} (+{this.getEndPoints(details.redEndRobotTwoStatus)})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
-            <Typography align={'center'} variant={'body1'}>Robot 1</Typography>
+            <Typography align={'center'} variant={'body1'}>Robot 2 End Status</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
             <Typography align={'center'} variant={'body1'}>{this.getEndText(details.blueEndRobotTwoStatus)} (+{this.getEndPoints(details.blueEndRobotTwoStatus)})</Typography>
@@ -260,7 +260,7 @@ class FRC20DetailCard extends React.Component<IProps, IState> {
             <Typography align={'center'} variant={'body1'}>{this.getEndText(details.redEndRobotThreeStatus)} (+{this.getEndPoints(details.redEndRobotThreeStatus)})</Typography>
           </Grid>
           <Grid item={true} xs={6} style={styles.headerItem}>
-            <Typography align={'center'} variant={'body1'}>Robot 1</Typography>
+            <Typography align={'center'} variant={'body1'}>Robot 3 End Status</Typography>
           </Grid>
           <Grid item={true} xs={3} style={styles.blueItem}>
             <Typography align={'center'} variant={'body1'}>{this.getEndText(details.blueEndRobotThreeStatus)} (+{this.getEndPoints(details.blueEndRobotThreeStatus)})</Typography>
