@@ -32,16 +32,14 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffdddd',
-    padding: AppTheme.spacing(1),
-    height: '100%'
+    padding: AppTheme.spacing(1)
   },
   blueItem: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ddddff',
-    padding: AppTheme.spacing(1),
-    height: '100%'
+    padding: AppTheme.spacing(1)
   },
   noVideo: {
     color: '#e6e6e6'
@@ -129,7 +127,7 @@ class MatchResultsTable extends React.Component<IProps> {
           <Link to={`/team/${p.teamKey}`}>
             <ButtonBase focusRipple={true}>
               {!p.team && <Typography align={"center"} variant={"body1"}>{p.teamKey}</Typography>}
-              {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.teamKey}</Typography>}
+              {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.team.teamNameShort}</Typography>}
             </ButtonBase>
           </Link>
         </Grid>
@@ -143,7 +141,7 @@ class MatchResultsTable extends React.Component<IProps> {
           <Link to={`/team/${p.teamKey}`}>
             <ButtonBase focusRipple={true}>
               {!p.team && <Typography align={"center"} variant={"body1"}>{name}</Typography>}
-              {p.team && <Typography align={"center"} variant={'body1'}><span className={`flag-icon flag-icon-${p.team.countryCode}`}/> {name}</Typography>}
+              {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.team.teamNameShort}</Typography>}
             </ButtonBase>
           </Link>
         </Grid>

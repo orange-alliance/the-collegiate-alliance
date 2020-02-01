@@ -81,7 +81,7 @@ class MatchTable extends React.Component<IProps, IState> {
             <ButtonBase focusRipple={true}>
               <Paper square={true} style={styles.redItem}>
                 {!p.team && <Typography align={"center"} variant={"body1"}>{p.teamKey}</Typography>}
-                {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.teamKey}</Typography>}
+                {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.team.teamNameShort}</Typography>}
               </Paper>
             </ButtonBase>
           </Link>
@@ -97,7 +97,7 @@ class MatchTable extends React.Component<IProps, IState> {
             <ButtonBase focusRipple={true}>
               <Paper square={true} style={styles.blueItem}>
                 {!p.team && <Typography align={"center"} variant={"body1"}>{p.teamKey}</Typography>}
-                {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.teamKey}</Typography>}
+                {p.team && <Typography align={"center"} variant={'body1'}><TeamImage team={p.team}/> {p.team.teamNameShort}</Typography>}
               </Paper>
             </ButtonBase>
           </Link>
