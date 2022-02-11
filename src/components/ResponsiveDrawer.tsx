@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -14,7 +14,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import { AppRoute } from "../AppRoutes";
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, useHistory} from "react-router-dom";
 
 import POWERED_BY_TOA from "../assets/powered_by_toa.png";
 
@@ -75,6 +75,12 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const history = useHistory();
+
+  useEffect(() => {
+    const path = new URLSearchParams(location.search).get("path");
+    history.push(path ? path : "");
+  }, [])
 
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
