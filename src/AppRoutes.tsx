@@ -16,6 +16,7 @@ import TeamView from "./views/team/TeamView";
 import RankingsView from "./views/rankings/RankingsView"
 import {CURRENT_SEASON} from "./AppTheme";
 
+// tslint:disable-next-line:interface-name
 export interface AppRoute {
   name: string;
   path: string;
@@ -24,6 +25,7 @@ export interface AppRoute {
   menuIcon?: any;
 }
 
+// @ts-ignore
 const appRoutes: AppRoute[] = [
   {
     name: "Home",
