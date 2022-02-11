@@ -1,8 +1,8 @@
 import {createMuiTheme} from "@material-ui/core/styles";
 
-export const CURRENT_SEASON = "20";
-export const CURRENT_SEASON_NAME = "Infinite Recharge";
-export const CURRENT_SEASON_EVENT_ID = "20-FCC-FER";
+export const CURRENT_SEASON = "22";
+export const CURRENT_SEASON_NAME = "Rapid React";
+export const CURRENT_SEASON_EVENT_ID = "22-FCC-TEST";
 
 export default createMuiTheme({
   palette: {

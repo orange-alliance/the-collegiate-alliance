@@ -9,6 +9,7 @@ import ListIcon from '@material-ui/icons/List';
 import HomeView from "./views/home/HomeView"
 import TeamsView from "./views/teams/TeamsView";
 import EventsView from "./views/events/EventsView";
+import FRC2020View from "./views/events/OldSeasons/frc20";
 import StreamingView from "./views/streaming/StreamingView";
 import MatchView from "./views/match/MatchView";
 import TeamView from "./views/team/TeamView";
@@ -50,7 +51,14 @@ const appRoutes: AppRoute[] = [
     exact: false,
     component: (routeProps: RouteComponentProps) => <EventsView routeProps={routeProps}/>,
     menuIcon: <CalendarTodayIcon/>
-  },
+  },/* TODO: Revisit and fix
+  {
+    name: "2020 Event",
+    path: '/2020',
+    exact: false,
+    component: (routeProps: RouteComponentProps) => <FRC2020View routeProps={routeProps}/>,
+    menuIcon: <CalendarTodayIcon/>
+  }*/,
   {
     name: "Streaming",
     path: '/streams',

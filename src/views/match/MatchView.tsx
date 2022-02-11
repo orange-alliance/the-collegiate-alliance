@@ -13,6 +13,7 @@ import {Dispatch} from "redux";
 import {connect} from "react-redux";
 
 import {FGCProvider, Match} from "@the-orange-alliance/lib-ems";
+import FRC22DetailCard from "../../components/game-specific/FRC22DetailCard";
 
 const styles = {
   container: {
@@ -36,6 +37,7 @@ class MatchView extends React.Component<IProps> {
     const {routeProps, setCompleteMatch} = this.props;
     if (typeof (routeProps.match.params as any).matchKey !== "undefined") {
       FGCProvider.getCompleteMatch((routeProps.match.params as any).matchKey).then((match: Match) => {
+        console.log("meep", match);
         setCompleteMatch(match);
       });
     }
@@ -52,7 +54,12 @@ class MatchView extends React.Component<IProps> {
             <MatchCardModule match={completeMatch}/>
           </Grid>
           <Grid item={true} xs={12} sm={12} md={6}>
-            <FRC20DetailCard match={completeMatch}/>
+            {completeMatch.matchKey.startsWith("20-") &&
+              <FRC20DetailCard match={completeMatch}/>
+            }
+            {completeMatch.matchKey.startsWith("22-") &&
+              <FRC22DetailCard match={completeMatch}/>
+            }
           </Grid>
         </Grid>
       </Container>
