@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import BANNER_IMG from "../assets/frc-ir-banner.png";
+import BANNER_IMG from "../assets/frc-22-banner.png";
 
 const styles = {
   container: {
