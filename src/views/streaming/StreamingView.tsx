@@ -20,7 +20,7 @@ class StreamingView extends React.Component{
     return (
       <Container fixed={true} style={styles.container}>
         <Typography variant={'h3'}>Streaming</Typography>
-        <Typography paragraph={true}>The following are a list of live streams provided by <i>FIRST</i> Global.</Typography>
+        <Typography paragraph={true}>The following are a list of live streams provided by FACC.</Typography>
         <StreamsModule/>
       </Container>
     );

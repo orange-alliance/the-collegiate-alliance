@@ -23,7 +23,7 @@
     "@material-ui/core": "^4.3.1",
     "@material-ui/icons": "^4.2.1",
     "@material-ui/lab": "^4.0.0-alpha.23",
-    "@the-orange-alliance/lib-ems": "^0.9.1-d",
+    "@the-orange-alliance/lib-ems": "^0.9.2-b",
     "axios": "^0.21.2",
     "axios-hooks": "^1.2.1",
     "express": "^4.17.1",

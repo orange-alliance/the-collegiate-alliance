@@ -30,8 +30,16 @@ class EventHeaderCard extends React.Component<IProps> {
     super(props);
   }
 
+  private formatDate(date: Date): string {
+    return date.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
   public render() {
     const {event} = this.props;
+    const {startDate: start, endDate: end} = event;
+
+    const oneDayEvent = start.getDate() === end.getDate() && start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear();
+
     return (
       <Card style={styles.card}>
         <CardContent>
@@ -45,7 +53,8 @@ class EventHeaderCard extends React.Component<IProps> {
               <CalendarIcon style={styles.icon}/>
             </Grid>
             <Grid item={true} xs={11}>
-              October 25th, 2019 - October 27th, 2019
+              { oneDayEvent && this.formatDate(start) }
+              { !oneDayEvent && `${this.formatDate(start)} to ${this.formatDate(end)}` }
             </Grid>
             {/* Event Location/Venue */}
             <Grid item={true} xs={1}>
@@ -59,7 +68,7 @@ class EventHeaderCard extends React.Component<IProps> {
               <VideoGameController style={styles.icon}/>
             </Grid>
             <Grid item={true} xs={11}>
-              {event.season && this.getGameName(event.season.seasonKey)}
+              {event.season.seasonDesc}
             </Grid>
           </Grid>
         </CardContent>
@@ -69,7 +78,7 @@ class EventHeaderCard extends React.Component<IProps> {
 
   private getGameName(seasonKey: number): string {
     switch (seasonKey) {
-      case 2020:
+      case 20:
         return CURRENT_SEASON_NAME;
       default:
         return "";

@@ -11,6 +11,9 @@ import mr20 from "../assets/team-logos/20/mr.jpg";
 import ms20 from "../assets/team-logos/20/ms.jpg";
 import os20 from "../assets/team-logos/20/os.jpg";
 
+// New Logos 2022
+import frc5116 from "../assets/team-logos/22/5116.jpg"
+import mez22 from "../assets/team-logos/22/mez.png"
 
 const styles = {
   logos: {
@@ -56,6 +59,8 @@ class TeamImage extends React.Component<IProps, IState> {
         case "mr": return mr20;
         case "ms": return ms20;
         case "os": return os20;
+        case "frc5116": return frc5116;
+        case "mez": return mez22;
       }
     }
 

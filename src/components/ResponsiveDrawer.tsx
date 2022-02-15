@@ -17,6 +17,7 @@ import { AppRoute } from "../AppRoutes";
 import {Link, NavLink, useHistory} from "react-router-dom";
 
 import POWERED_BY_TOA from "../assets/powered_by_toa.png";
+import CalendarTodayIcon from "@material-ui/icons/CalendarTodayTwoTone";
 
 const drawerWidth = 220;
 
@@ -77,6 +78,11 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const history = useHistory();
 
+  const displaySeasons: {name: string, seasonKey: string}[] = [
+    {name: "2022 Event", seasonKey: "22"},
+    {name: "2020 Event", seasonKey: "20"},
+  ];
+
   useEffect(() => {
     const path = new URLSearchParams(location.search).get("path");
     history.push(path ? path : "");
@@ -89,7 +95,7 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps) {
   const menuItems = appRoutes.filter((route: AppRoute) => typeof route.menuIcon !== "undefined").map((route: AppRoute) => {
     return (
       <NavLink key={route.name} to={route.path} exact={route.exact} activeClassName={"nav-active"}>
-        <ListItem button key={route.path}>
+        <ListItem button={true} key={route.path}>
           <ListItemIcon>{route.menuIcon ? route.menuIcon : <MenuIcon/>}</ListItemIcon>
           <ListItemText primary={route.name} />
         </ListItem>
@@ -100,11 +106,20 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps) {
   const drawer = (
     <div>
       <div className={classes.toolbar}>
-        {logo ? <img src={logo} className={classes.logo}/> : title}
+        {logo ? <img src={logo} alt={'FACC Logo'} className={classes.logo}/> : title}
       </div>
       <Divider />
       <List>
         {menuItems}
+        {displaySeasons.map(season => (
+          <NavLink key={season.seasonKey} to={`/events/${season.seasonKey}`} exact={true} activeClassName={"nav-active"}>
+            <ListItem button={true}>
+              <ListItemIcon><CalendarTodayIcon/></ListItemIcon>
+              <ListItemText primary={season.name} />
+            </ListItem>
+          </NavLink>
+        ))
+        }
       </List>
       <Divider />
       <div>

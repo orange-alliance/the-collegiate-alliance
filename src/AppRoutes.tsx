@@ -9,12 +9,11 @@ import ListIcon from '@material-ui/icons/List';
 import HomeView from "./views/home/HomeView"
 import TeamsView from "./views/teams/TeamsView";
 import EventsView from "./views/events/EventsView";
-import FRC2020View from "./views/events/OldSeasons/frc20";
 import StreamingView from "./views/streaming/StreamingView";
 import MatchView from "./views/match/MatchView";
 import TeamView from "./views/team/TeamView";
 import RankingsView from "./views/rankings/RankingsView"
-import {CURRENT_SEASON} from "./AppTheme";
+import EventsForwarder from "./views/events/EventsForwarder";
 
 // tslint:disable-next-line:interface-name
 export interface AppRoute {
@@ -35,38 +34,36 @@ const appRoutes: AppRoute[] = [
     menuIcon: <HomeIcon/>
   },
   {
-    name: "Teams",
-    path: '/teams',
-    exact: true,
-    component: () => <TeamsView/>,
-    menuIcon: <PeopleIcon/>
-  },
-  {
-    name: "Rankings",
-    path: '/rankings',
-    component: () => <RankingsView/>,
-    menuIcon: <ListIcon/>
-  },
-  {
-    name: "20" + CURRENT_SEASON + " Event",
-    path: '/events',
-    exact: false,
-    component: (routeProps: RouteComponentProps) => <EventsView routeProps={routeProps}/>,
-    menuIcon: <CalendarTodayIcon/>
-  },/* TODO: Revisit and fix
-  {
-    name: "2020 Event",
-    path: '/2020',
-    exact: false,
-    component: (routeProps: RouteComponentProps) => <FRC2020View routeProps={routeProps}/>,
-    menuIcon: <CalendarTodayIcon/>
-  }*/,
-  {
     name: "Streaming",
     path: '/streams',
     exact: true,
     component: () => <StreamingView/>,
     menuIcon: <CameraIcon/>
+  },
+  {
+    name: "Teams",
+    path: '/teams',
+    exact: true,
+    component: () => <TeamsView/>,
+    menuIcon: <PeopleIcon/>
+  },/* This was really only for FGC
+  {
+    name: "Rankings",
+    path: '/rankings',
+    component: () => <RankingsView/>,
+    menuIcon: <ListIcon/>
+  },*/
+  {
+    name: "Forwards to Current Season",
+    path: '/events',
+    exact: false,
+    component: (routeProps: RouteComponentProps) => <EventsForwarder routeProps={routeProps}/>,
+  },
+  {
+    name: "Historical Seasons",
+    path: '/events/:seasonKey',
+    exact: false,
+    component: (routeProps: RouteComponentProps) => <EventsView routeProps={routeProps}/>
   },
   {
     name: "Match",
