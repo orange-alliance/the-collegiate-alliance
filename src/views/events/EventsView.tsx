@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Route, RouteComponentProps} from "react-router-dom";
+import {Route, RouteComponentProps} from "react-router-dom";
 import AppTheme, {CURRENT_SEASON} from "../../AppTheme";
 import Container from "@material-ui/core/Container";
 import EventView from "../event/EventView";
@@ -16,8 +16,7 @@ import {Event, EventType, FGCProvider, Ranking, Team, Match} from "@the-orange-a
 
 const styles = {
   container: {
-    margin: 0,
-    paddingTop: AppTheme.spacing(3)
+    padding: AppTheme.spacing(1)
   }
 };
 
@@ -44,11 +43,10 @@ class EventsView extends React.Component<IProps, IState> {
     this.state = {
       seasonKey: CURRENT_SEASON
     };
-
-    this.renderEvent = this.renderEvent.bind(this);
   }
 
   public componentWillMount() {
+    // tslint:disable-next-line:no-shadowed-variable
     const {routeProps, matches, event, teams, setTeams, setEvent, setMatches, setRankings} = this.props;
     const {seasonKey} = this.state;
     if (typeof event.eventCode === "undefined" || event.eventCode.length <= 0) {
@@ -56,68 +54,59 @@ class EventsView extends React.Component<IProps, IState> {
       const key: string = routeKey ? routeKey : seasonKey;
       FGCProvider.getEventBySeason(key).then((newEvent: Event) => {
         setEvent(newEvent);
-        FGCProvider.getAllEventMatches(newEvent.eventKey).then((matches: Match[]) => {
-          setMatches(matches.filter((m: Match) => m.tournamentLevel > Match.PRACTICE_LEVEL));
+        FGCProvider.getAllEventMatches(newEvent.eventKey).then((newMatches: Match[]) => {
+          setMatches(newMatches.filter((m: Match) => m.tournamentLevel > Match.PRACTICE_LEVEL));
         });
-        FGCProvider.getTeams(newEvent.eventKey).then((teams: Team[]) => {
-          setTeams(teams);
+        FGCProvider.getTeams(newEvent.eventKey).then((newTeams: Team[]) => {
+          setTeams(newTeams);
         });
         FGCProvider.getRankingTeams(newEvent.eventKey, getEventTypeFromKey(newEvent.season.seasonKey.toString())).then((rankings: Ranking[]) => {
           setRankings(rankings);
         });
       });
     } else if (matches.length <= 0) {
-      FGCProvider.getAllEventMatches(event.eventKey).then((matches: Match[]) => {
-        setMatches(matches);
+      FGCProvider.getAllEventMatches(event.eventKey).then((newMatches: Match[]) => {
+        setMatches(newMatches);
       });
     } else if (teams.length <= 0) {
-      FGCProvider.getTeams(event.eventKey).then((teams: Team[]) => {
-        setTeams(teams);
+      FGCProvider.getTeams(event.eventKey).then((newTeams: Team[]) => {
+        setTeams(newTeams);
       });
     }
   }
 
   public componentDidUpdate(prevProps: IProps, prevState: IState) {
-    const {event, setTeams, setEvent, setMatches, setRankings} = this.props;
-    const {seasonKey} = this.state;
-    if (seasonKey !== prevState.seasonKey && event.eventKey.length <= 0) {
+    // tslint:disable-next-line:no-shadowed-variable
+    const {routeProps, event, setTeams, setEvent, setMatches, setRankings} = this.props;
+    const seasonKey: string = (routeProps.match.params as any).seasonKey;
+    if(!seasonKey && !prevState.seasonKey) {return;} // avoid excess executions during state transitions
+    if (seasonKey && seasonKey !== prevState.seasonKey) {
       FGCProvider.getEventBySeason(seasonKey).then((newEvent: Event) => {
         setEvent(newEvent);
-        FGCProvider.getAllEventMatches(event.eventKey).then((matches: Match[]) => {
-          setMatches(matches);
-        });
-        FGCProvider.getTeams(event.eventKey).then((teams: Team[]) => {
-          setTeams(teams);
-        });
-        FGCProvider.getRankingTeams(event.eventKey, getEventTypeFromKey(event.season.seasonKey.toString())).then((rankings: Ranking[]) => {
-          setRankings(rankings);
-        });
+        Promise.all([
+          FGCProvider.getAllEventMatches(event.eventKey).then((matches: Match[]) => {
+            setMatches(matches);
+          }),
+          FGCProvider.getTeams(event.eventKey).then((teams: Team[]) => {
+            setTeams(teams);
+          }),
+          FGCProvider.getRankingTeams(event.eventKey, getEventTypeFromKey(event.season.seasonKey.toString())).then((rankings: Ranking[]) => {
+            setRankings(rankings);
+          }),
+        ]);
+      }).then(() => {
+        this.setState({seasonKey: seasonKey})
       });
     }
   }
 
   public render() {
-    const {routeProps} = this.props;
+    const {event, matches, teams, rankings} = this.props;
     return (
-      <Container maxWidth={false} style={styles.container}>
-        {/*<Typography variant={'h3'}>FIRST Global Competitions</Typography>*/}
-        {/* Events display based upon the route */}
-        <Route path={`${routeProps.match.path}/:seasonKey`} render={this.renderEvent}/>
-        <Route path={routeProps.match.path} exact={true} render={this.renderEvent}/>
+      <Container style={styles.container}>
+        <EventView event={event} matches={matches} teams={teams} rankings={rankings}/>
       </Container>
     );
-  }
-
-  private renderEvent(routeParams: RouteComponentProps) {
-    const {event, matches, teams, rankings} = this.props;
-    const {seasonKey} = this.state;
-    const params: any = routeParams.match.params;
-    if (typeof params.seasonKey !== "undefined" &&
-        seasonKey !== params.seasonKey &&
-        params.seasonKey.length > 0) {
-      this.setState({seasonKey: params.seasonKey});
-    }
-    return <EventView event={event} matches={matches} teams={teams} rankings={rankings}/>;
   }
 }
 

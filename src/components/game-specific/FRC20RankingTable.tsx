@@ -6,8 +6,8 @@ import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 
 import {Ranking, InfiniteRechargeRank} from "@the-orange-alliance/lib-ems";
-import ButtonBase from "@material-ui/core/ButtonBase/ButtonBase";
 import {Link} from "react-router-dom";
+import {Button} from "@material-ui/core";
 
 const styles = {
   header: {
@@ -17,7 +17,8 @@ const styles = {
     color: '#495057'
   },
   buttonLink: {
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    height: '20px'
   }
 };
 
@@ -38,7 +39,7 @@ class FRC20RankingTable extends React.Component<IProps> {
       return (
         <TableRow key={rank.rankKey}>
           <TableCell>#{rank.rank}</TableCell>
-          <TableCell><Link to={`/team/${rank.teamKey}`}><ButtonBase focusRipple={true} style={styles.buttonLink}>{name}</ButtonBase></Link></TableCell>
+          <TableCell><Link to={`/team/${rank.teamKey}`}><Button focusRipple={true} style={styles.buttonLink}>{name}</Button></Link></TableCell>
           <TableCell>{rank.rankingPoints}</TableCell>
           <TableCell>{rank.rankingScore}</TableCell>
           <TableCell>{rank.autoPoints}</TableCell>
